@@ -1,9 +1,44 @@
+import axios from "axios";
+
+const API_BASE = "https://ec-course-api.hexschool.io/v2";
+const API_PATH = "book-rental";
+
 export default function MainView({
   products,
   checkLogin,
   logout,
   setTempProduct,
+  setProducts,
 }) {
+  // 切換產品啟用狀態
+  const toggleProductStatus = async (product) => {
+    try {
+      // 將完整的產品資料發送到 API，僅修改 `is_enabled`
+      const updatedProduct = {
+        ...product,
+        is_enabled: !product.is_enabled, // 反轉啟用狀態
+      };
+
+      const response = await axios.put(
+        `${API_BASE}/api/${API_PATH}/admin/product/${product.id}`,
+        {
+          data: updatedProduct, // 傳遞完整的產品資料
+        }
+      );
+
+      // 更新本地的產品列表狀態
+      setProducts((prevProducts) =>
+        prevProducts.map((p) => (p.id === product.id ? updatedProduct : p))
+      );
+
+      console.log(`產品狀態切換成功`);
+    } catch (error) {
+      console.error(
+        `切換狀態失敗: ${error.response?.data?.message || error.message}`
+      );
+    }
+  };
+
   return (
     <main className="col-md-6">
       {/* 功能按鈕 */}
@@ -56,7 +91,9 @@ export default function MainView({
                     <span
                       className={`badge ${
                         item.is_enabled ? "bg-success" : "bg-secondary"
-                      }`}>
+                      }`}
+                      style={{ cursor: "pointer" }}
+                      onClick={() => toggleProductStatus(item)}>
                       {item.is_enabled ? "啟用" : "未啟用"}
                     </span>
                   </td>
