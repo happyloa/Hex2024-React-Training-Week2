@@ -33,6 +33,19 @@ export default function App() {
     }
   }
 
+  const logout = async () => {
+    try {
+      await axios.post(`${API_BASE}/logout`);
+      document.cookie = "hexToken=;expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+      axios.defaults.headers.common.Authorization = null;
+      setisAuth(false);
+      setProducts([]);
+      alert("已成功登出！");
+    } catch (error) {
+      console.error("登出失敗:", error.response.data.message);
+    }
+  };
+
   const getData = async () => {
     try {
       const response = await axios.get(
@@ -77,11 +90,18 @@ export default function App() {
           <div className="row mt-5">
             <div className="col-md-6">
               <button
-                className="btn btn-danger mb-5"
+                className="btn btn-warning mb-5"
                 type="button"
                 id="check"
                 onClick={checkLogin}>
                 確認是否登入
+              </button>
+              <button
+                className="btn btn-danger mb-5 ms-2"
+                type="button"
+                id="logout"
+                onClick={logout}>
+                登出
               </button>
               <h2>產品列表</h2>
               <table className="table">
