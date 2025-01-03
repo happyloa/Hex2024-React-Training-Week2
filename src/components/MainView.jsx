@@ -11,6 +11,7 @@ export default function MainView({
   logout, // 登出的函式
   setTempProduct, // 設定單一產品細節
   setProducts, // 更新產品列表的函式
+  // postBooks, // 新增商品的函式
 }) {
   const [loading, setLoading] = useState(true); // 管理載入狀態
 
@@ -81,12 +82,19 @@ export default function MainView({
           </button>
           {/* 登出按鈕 */}
           <button
-            className="btn btn-danger"
+            className="btn btn-danger me-2"
             type="button"
             id="logout"
             onClick={logout}>
             登出
           </button>
+          {/* <button
+            className="btn btn-secondary"
+            type="button"
+            id="postBooks"
+            onClick={postBooks}>
+            匯入資料
+          </button> */}
         </div>
       </div>
 
