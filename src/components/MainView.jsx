@@ -140,7 +140,7 @@ export default function MainView({
                     <td className="text-center">
                       {/* 查看產品細節按鈕 */}
                       <button
-                        className="btn btn-primary btn-sm"
+                        className="btn btn-primary btn-sm text-nowrap"
                         onClick={() => setTempProduct(item)}>
                         查看細節
                       </button>
