@@ -137,8 +137,8 @@ export default function App() {
     <>
       {isAuth ? (
         // 若已登入，顯示主畫面
-        <section className="container">
-          <div className="row mt-5">
+        <section className="container py-5">
+          <div className="row">
             {/* 主畫面：顯示產品列表 */}
             <MainView
               products={products}
