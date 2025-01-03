@@ -31,7 +31,7 @@ export default function MainView({
         prevProducts.map((p) => (p.id === product.id ? updatedProduct : p))
       );
 
-      console.log(`產品狀態切換成功`);
+      console.log(`${product.id} ${product.title}：產品狀態切換成功`);
     } catch (error) {
       console.error(
         `切換狀態失敗: ${error.response?.data?.message || error.message}`
@@ -59,6 +59,13 @@ export default function MainView({
             onClick={logout}>
             登出
           </button>
+          {/* <button
+            className="btn btn-secondary"
+            type="button"
+            id="logout"
+            onClick={postBooks}>
+            登出
+          </button> */}
         </div>
       </div>
 
