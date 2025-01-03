@@ -1,5 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&display=swap");
+
 html,
 body {
+  font-family: "Noto Sans TC", sans-serif;
   height: 100%;
   text-align: center;
   background-color: #f8f9fa; /* 添加背景色，提升視覺效果 */
