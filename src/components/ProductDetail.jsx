@@ -1,7 +1,7 @@
 export default function ProductDetail({ tempProduct }) {
   return (
     <aside className="col-md-6">
-      <h2 className="text-primary mb-4">單一產品細節</h2>
+      <h2 className="mb-4">單一產品細節</h2>
       {tempProduct ? (
         <div className="card shadow-sm">
           {/* 主圖 */}
@@ -12,28 +12,38 @@ export default function ProductDetail({ tempProduct }) {
           />
           {/* 詳細內容 */}
           <div className="card-body">
-            <h5 className="card-title d-flex align-items-center">
-              {tempProduct.title}
-              <span className="badge bg-primary ms-3">
-                {tempProduct.category}
-              </span>
-            </h5>
-            <p className="card-text text-muted">
-              商品描述：{tempProduct.category}
+            {/* 商品標題與分類 */}
+            <div className="d-flex justify-content-center align-items-center gap-2 mb-4">
+              <h5 className="mb-0 card-title">{tempProduct.title}</h5>
+              <span className="badge bg-primary">{tempProduct.category}</span>
+            </div>
+            {/* 商品描述與內容 */}
+            <p className="card-text text-muted text-center">
+              {tempProduct.category}
             </p>
-            <p className="card-text">商品內容：{tempProduct.content}</p>
-            <div className="d-flex align-items-center">
-              <p className="card-text text-secondary mb-0 me-2">
-                <del>{tempProduct.origin_price}</del>
+            <p className="card-text text-center">{tempProduct.content}</p>
+            {/* 分隔線 */}
+            <hr />
+            {/* 價格區域 */}
+            <div className="text-center my-4">
+              <p className="mb-1 text-secondary" style={{ fontSize: "0.9rem" }}>
+                原價：
+                <span style={{ textDecoration: "line-through" }}>
+                  {tempProduct.origin_price} 元
+                </span>
               </p>
-              <p className="card-text text-success fw-bold mb-0">
-                {tempProduct.price} 元
+              <p
+                className="text-success fw-bold"
+                style={{ fontSize: "1.5rem" }}>
+                特價：{tempProduct.price} 元
               </p>
             </div>
+            {/* 分隔線 */}
+            <hr />
             {/* 更多圖片 - Bootstrap 輪播 */}
             {tempProduct.imagesUrl && tempProduct.imagesUrl.length > 0 && (
               <div className="mt-4">
-                <h5 className="mb-3">更多圖片：</h5>
+                <h5 className="mb-3 text-center">更多圖片：</h5>
                 <div
                   id="carouselExampleControls"
                   className="carousel slide"
