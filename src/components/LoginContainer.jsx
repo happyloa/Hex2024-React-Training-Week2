@@ -27,8 +27,8 @@ export default function LoginContainer({
       </div>
       {/* 版權資訊 */}
       <footer className="mt-5 mb-3 text-muted text-center">
-        &copy; 2024~∞ - 六角學院 2024 React 作品實戰冬季班第二週作業 - RESTful
-        API 串接 by Aaron
+        <p>&copy; 2024~∞ - 六角學院 2024 React 作品實戰冬季班</p>
+        <p>第二週作業 - RESTful API 串接 by Aaron</p>
       </footer>
     </section>
   );
