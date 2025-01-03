@@ -5,7 +5,7 @@ import "./assets/style.css";
 const API_BASE = "https://ec-course-api.hexschool.io/v2";
 
 // 請自行替換 API_PATH
-const API_PATH = "";
+const API_PATH = "book-rental";
 
 function App() {
   const [formData, setFormData] = useState({
