@@ -2,6 +2,8 @@ import { useState } from "react";
 
 import axios from "axios";
 
+import MainView from "./components/MainView";
+import ProductDetail from "./components/ProductDetail";
 import LoginContainer from "./components/LoginContainer";
 
 // import books from "./books";
@@ -129,107 +131,13 @@ export default function App() {
       {isAuth ? (
         <section className="container">
           <div className="row mt-5">
-            <main className="col-md-6">
-              <button
-                className="btn btn-warning mb-5"
-                type="button"
-                id="check"
-                onClick={checkLogin}>
-                確認是否登入
-              </button>
-              <button
-                className="btn btn-danger mb-5 ms-2"
-                type="button"
-                id="logout"
-                onClick={logout}>
-                登出
-              </button>
-              {/* <button
-                className="btn btn-secondary mb-5 ms-2"
-                type="button"
-                id="postBooks"
-                onClick={postBooks}>
-                匯入資料
-              </button> */}
-              <h2>產品列表</h2>
-              <table className="table">
-                <thead>
-                  <tr>
-                    <th>產品名稱</th>
-                    <th>原價</th>
-                    <th>售價</th>
-                    <th>是否啟用</th>
-                    <th>查看細節</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {products && products.length > 0 ? (
-                    products.map((item) => (
-                      <tr key={item.id}>
-                        <td>{item.title}</td>
-                        <td>{item.origin_price}</td>
-                        <td>{item.price}</td>
-                        <td>{item.is_enabled ? "啟用" : "未啟用"}</td>
-                        <td>
-                          <button
-                            className="btn btn-primary"
-                            onClick={() => setTempProduct(item)}>
-                            查看細節
-                          </button>
-                        </td>
-                      </tr>
-                    ))
-                  ) : (
-                    <tr>
-                      <td colSpan="5">尚無產品資料</td>
-                    </tr>
-                  )}
-                </tbody>
-              </table>
-            </main>
-            <aside className="col-md-6">
-              <h2>單一產品細節</h2>
-              {tempProduct ? (
-                <div className="card mb-3">
-                  <img
-                    src={tempProduct.imageUrl}
-                    className="card-img-top primary-image"
-                    alt="主圖"
-                  />
-                  <div className="card-body">
-                    <h5 className="card-title">
-                      {tempProduct.title}
-                      <span className="badge bg-primary ms-2">
-                        {tempProduct.category}
-                      </span>
-                    </h5>
-                    <p className="card-text">
-                      商品描述：{tempProduct.category}
-                    </p>
-                    <p className="card-text">商品內容：{tempProduct.content}</p>
-                    <div className="d-flex">
-                      <p className="card-text text-secondary">
-                        <del>{tempProduct.origin_price}</del>
-                      </p>
-                      元 / {tempProduct.price} 元
-                    </div>
-                    <h5 className="mt-3">更多圖片：</h5>
-                    <div className="d-flex flex-wrap">
-                      {tempProduct.imagesUrl?.map((url, index) => (
-                        <img
-                          key={index}
-                          src={url}
-                          className="images"
-                          alt="副圖"
-                        />
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              ) : (
-                <p className="text-secondary">請選擇一個商品查看</p>
-              )}
-            </aside>
+            <MainView
+              products={products}
+              checkLogin={checkLogin}
+              logout={logout}
+              setTempProduct={setTempProduct}
+            />
+            <ProductDetail tempProduct={tempProduct} />
           </div>
         </section>
       ) : (
