@@ -142,6 +142,7 @@ export default function App() {
             {/* 主畫面：顯示產品列表 */}
             <MainView
               products={products}
+              setProducts={setProducts}
               checkLogin={checkLogin}
               logout={logout}
               setTempProduct={setTempProduct}
