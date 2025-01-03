@@ -7,7 +7,7 @@ const API_BASE = "https://ec-course-api.hexschool.io/v2";
 // 請自行替換 API_PATH
 const API_PATH = "book-rental";
 
-function App() {
+export default function App() {
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -80,8 +80,7 @@ function App() {
                 className="btn btn-danger mb-5"
                 type="button"
                 id="check"
-                onClick={checkLogin}
-              >
+                onClick={checkLogin}>
                 確認是否登入
               </button>
               <h2>產品列表</h2>
@@ -106,8 +105,7 @@ function App() {
                         <td>
                           <button
                             className="btn btn-primary"
-                            onClick={() => setTempProduct(item)}
-                          >
+                            onClick={() => setTempProduct(item)}>
                             查看細節
                           </button>
                         </td>
@@ -199,8 +197,7 @@ function App() {
                 </div>
                 <button
                   className="btn btn-lg btn-primary w-100 mt-3"
-                  type="submit"
-                >
+                  type="submit">
                   登入
                 </button>
               </form>
@@ -212,5 +209,3 @@ function App() {
     </>
   );
 }
-
-export default App;
