@@ -1,11 +1,50 @@
 import { useState } from "react";
+
 import axios from "axios";
+
+// import books from "./books";
+
 import "./assets/style.css";
 
 const API_BASE = "https://ec-course-api.hexschool.io/v2";
 
 // 請自行替換 API_PATH
 const API_PATH = "book-rental";
+
+// const data = books;
+
+// async function postBooks() {
+//   try {
+//     const token = document.cookie
+//       .split("; ")
+//       .find((row) => row.startsWith("hexToken="))
+//       ?.split("=")[1];
+
+//     if (!token) {
+//       console.error("Token 未找到，請先登入！");
+//       return;
+//     }
+
+//     axios.defaults.headers.common.Authorization = token;
+
+//     for (const book of data) {
+//       const response = await axios.post(
+//         `${API_BASE}/api/${API_PATH}/admin/product`,
+//         {
+//           data: book, // API 要求的資料格式
+//         }
+//       );
+//       console.log(`成功新增: ${book.title}`, response.data);
+//     }
+
+//     alert("所有書籍資料已成功新增！");
+//   } catch (error) {
+//     console.error(
+//       "新增資料失敗:",
+//       error.response?.data?.message || error.message
+//     );
+//   }
+// }
 
 export default function App() {
   const [formData, setFormData] = useState({
@@ -103,6 +142,13 @@ export default function App() {
                 onClick={logout}>
                 登出
               </button>
+              {/* <button
+                className="btn btn-secondary mb-5 ms-2"
+                type="button"
+                id="postBooks"
+                onClick={postBooks}>
+                匯入資料
+              </button> */}
               <h2>產品列表</h2>
               <table className="table">
                 <thead>
