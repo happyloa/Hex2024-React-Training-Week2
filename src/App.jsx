@@ -125,9 +125,9 @@ export default function App() {
   return (
     <>
       {isAuth ? (
-        <div className="container">
+        <section className="container">
           <div className="row mt-5">
-            <div className="col-md-6">
+            <main className="col-md-6">
               <button
                 className="btn btn-warning mb-5"
                 type="button"
@@ -184,8 +184,8 @@ export default function App() {
                   )}
                 </tbody>
               </table>
-            </div>
-            <div className="col-md-6">
+            </main>
+            <aside className="col-md-6">
               <h2>單一產品細節</h2>
               {tempProduct ? (
                 <div className="card mb-3">
@@ -227,11 +227,11 @@ export default function App() {
               ) : (
                 <p className="text-secondary">請選擇一個商品查看</p>
               )}
-            </div>
+            </aside>
           </div>
-        </div>
+        </section>
       ) : (
-        <div className="container login">
+        <section className="container login">
           <div className="row justify-content-center">
             <h1 className="h3 mb-3 font-weight-normal">請先登入</h1>
             <div className="col-8">
@@ -270,7 +270,7 @@ export default function App() {
             </div>
           </div>
           <p className="mt-5 mb-3 text-muted">&copy; 2024~∞ - 六角學院</p>
-        </div>
+        </section>
       )}
     </>
   );
